@@ -9,7 +9,7 @@
 <script>
 "use strict";
 function modify() {
-    let i = Number(ie.value); let x = xe.value; 
+    let i = Number(ie.value); let x = xe.value;
     xe.value = a[i]; a[i] = x; reportA("a["+i+"] = "+x);
 }
 function remove() {
@@ -27,6 +27,34 @@ function reportA(str) {
     outA.innerText = "a = [ "+ a.join(", ")+" ] "+a.length;
     console.log(str);
 }
+function find() {
+  let i = 0;
+
+  for(i; i<a.length; i++) {
+    if (a[i] == search_key.value) {
+        document.getElementById('search_result').innerHTML =  search_key.value + ' is here!'
+        document.getElementById('search_result').style.color = 'green'
+        return;
+    }
+  }
+  document.getElementById('search_result').innerHTML =  search_key.value + ' is not here!'
+  document.getElementById('search_result').style.color = 'red'
+}
+function kes () {
+  a = a.slice(slice_val.value);
+  reportA("slice ");
+}
+function addF () {
+  let code = input_code.value;
+  let t;
+  try {
+      t = Function(code).call();
+    } catch (error) {
+      t = error;
+    }
+
+    return t;
+}
 </script>
 
 <body>
@@ -34,17 +62,33 @@ function reportA(str) {
 
 <p id=outA></p>
 <p>
-i = <input type=number id=ie value=1  style="width:40px"> &emsp; 
-x = <input type=text   id=xe value=53 style="width:99px"> 
+i = <input type=number id=ie value=1  style="width:40px"> &emsp;
+x = <input type=text   id=xe value=53 style="width:99px">
 </p><p>
 <input type=button value="a[i]=x"  onClick="modify()">
 <input type=button value="remove"  onClick="remove()">
 <input type=button value="push x"  onClick="push()">
 <input type=button value="x=pop"   onClick="popA()">
+<br><br>
+<input type=text   id=search_key style="width:99px">
+<input type=button value="Ara"   onClick="find()">
+
+<br><br>
+Slice from: <input type=text   id=slice_val style="width:99px">
+<input type=button value="Kes"   onClick="kes()">
+<br><br>
+<p>Write your function here: </p>
+<textarea id="input_code" rows="12" cols="40" style="margin: 0px; width: 280px; height: 165px;">
+console.log("my func!");
+</textarea>
+<br>
+<input type=button value="Add function to array"   onClick="addF()">
+<p id="search_result"></p>
+
 </p>
 
 <hr />
-<p>Ref: 
+<p>Ref:
 <a href="https://www.w3schools.com/js/js_arrays.asp" target="ExternalDocument">Array Examples</a></p>
 <p>
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections" target="ExternalDocument">Set Examples</a>
@@ -52,7 +96,7 @@ x = <input type=text   id=xe value=53 style="width:99px">
 
 <script>
     title.innerText = document.title;
-    const a = [234, "abc", "son"];  //initially
+    var a = [234, "abc", "son"];  //initially
     reportA("start");
 </script>
 
