@@ -8,42 +8,91 @@
 
 <script>
 "use strict";
-function modify() {
-    let i = Number(ie.value); let x = xe.value;
-    xe.value = a[i]; a[i] = x; reportA("a["+i+"] = "+x);
+function add (name, midterm, final) {
+  name = iname.value;
+  midterm = Number(imidterm.value);
+  final = Number(ifinal.value);
+  a.push([name,midterm,final]);
 }
-function remove() {
-    let i = Number(ie.value);
-    xe.value = a[i]; a.splice(i, 1); reportA("remove "+i);
+function printCourses () {
+  let rows = a;
+
+  let html = "<table border='0|0'>";
+  html += "<tr> <td><b>Name</b></td> <td><b>Midterm</b></td> <td><b>Final</b></td> </tr>"
+  for (var i = 0; i < rows.length; i++) {
+    console.log(rows[i])
+      html+="<tr>";
+      html+="<td>"+rows[i][0]+"</td>";
+      html+="<td>"+rows[i][1]+"</td>";
+      html+="<td>"+rows[i][2]+"</td>";
+
+      html+="</tr>";
+  }
+  html+="</table>";
+document.getElementById("sec1").innerHTML = html;
 }
-function push() {
-    let x = xe.value; let i = Number(ie.value);
-    a.push(x); reportA("push "+x);
+function avg () {
+  let rows = a;
+  let avg = 0;
+  let html = "<table border='0|0'>";
+  html += "<tr> <td><b>Name</b></td> <td><b>Avarage</b></td> </tr>"
+  for (var i = 0; i < rows.length; i++) {
+      avg = 0;
+      html+="<tr>";
+      html+="<td>"+rows[i][0]+"</td>";
+      avg = ((rows[i][1]) + (rows[i][2]))/2;
+      html+="<td>"+avg+"</td>";
+
+      html+="</tr>";
+  }
+  html+="</table>";
+document.getElementById("sec2").innerHTML = html;
 }
-function popA() {
-    xe.value = a.pop(); reportA("pop ");
-}
-function reportA(str) {
-    outA.innerText = "a = [ "+ a.join(", ")+" ] "+a.length;
-    console.log(str);
+function findMax () {
+  let rows = a;
+  let max = 0;
+  let html = "<table border='0|0'>";
+  html += "<tr> <td><b>Name</b></td> <td><b>Max</b></td> </tr>"
+  for (var i = 0; i < rows.length; i++) {
+      max = 0;
+      html+="<tr>";
+      html+="<td>"+rows[i][0]+"</td>";
+      max = Math.max(rows[i][1],rows[i][2]);
+      html+="<td>"+max+"</td>";
+
+      html+="</tr>";
+  }
+  html+="</table>";
+document.getElementById("sec3").innerHTML = html;
 }
 </script>
 
 <body>
 <h2 id=title></h2>
 
-<p id=outA></p>
 <p>
-i = <input type=number id=ie value=1  style="width:40px"> &emsp;
-x = <input type=text   id=xe value=53 style="width:99px">
-</p><p>
-<input type=button value="a[i]=x"  onClick="modify()">
-<input type=button value="remove"  onClick="remove()">
-<input type=button value="push x"  onClick="push()">
-<input type=button value="x=pop"   onClick="popA()">
+<b>Name: </b><input type=text id=iname style="width:99px"> &emsp;
+<br>
+</p>
+<p>
+<b>Midterm : </b><input type=number id=imidterm style="width:40px">&emsp;
+<br>
+</p>
+<p>
+<b>Final : </b><input type=number id=ifinal style="width:40px">
+</p>
+<p>
+<input type=button value="add"  onClick="add()">
+<input type=button value="print"  onClick="printCourses()">
+<input type=button value="avarage"  onClick="avg()">
+<input type=button value="max"  onClick="findMax()">
 </p>
 
 <hr />
+
+<p id="sec1"></p>
+<div id="sec2"></div>
+<div id="sec3"></div>
 <p>Ref:
 <a href="https://www.w3schools.com/js/js_arrays.asp" target="ExternalDocument">Array Examples</a></p>
 <p>
@@ -52,8 +101,8 @@ x = <input type=text   id=xe value=53 style="width:99px">
 
 <script>
     title.innerText = document.title;
-    const a = [234, "abc", "son"];  //initially
-    reportA("start");
+    var a = [];
+
 </script>
 
 </body>
