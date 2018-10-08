@@ -50,20 +50,24 @@ document.getElementById("sec2").innerHTML = html;
 }
 function findMax () {
   let rows = a;
+  let ss = ort;
   let max = 0;
+  for(let i=0; i<rows.length; i++) {
+    ss.push((Number(rows[i][1]) + Number(rows[i][2]))/2);
+  }
+  console.log(ss);
+
   let html = "<table border='0|0'>";
   html += "<tr> <td><b>Name</b></td> <td><b>Max</b></td> </tr>"
-  for (var i = 0; i < rows.length; i++) {
       max = 0;
       html+="<tr>";
-      html+="<td>"+rows[i][0]+"</td>";
-      max = Math.max(rows[i][1],rows[i][2]);
+      max = Math.max(...ort);
       html+="<td>"+max+"</td>";
 
       html+="</tr>";
-  }
   html+="</table>";
 document.getElementById("sec3").innerHTML = html;
+
 }
 </script>
 
@@ -102,6 +106,7 @@ document.getElementById("sec3").innerHTML = html;
 <script>
     title.innerText = document.title;
     var a = [];
+    var ort = [];
 
 </script>
 
