@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://maeyler.github.io/JS/sss/inspector.css"
+          rel="stylesheet" media="all">
+    <script src="https://maeyler.github.io/JS/sss/inspector.js"></script>
+
+    <script src="async.js"></script>
+    <script src="Database.js"></script>
+    <title>Eloquent JavaScript </title>
+</head>
+
+<body>
+<p><b id=docName></b> &nbsp;
+<a href="https://yavuzselimgugen.github.io/advanced_homework/HW1.html">HW1</a> &nbsp;
+<a href="https://yavuzselimgugen.github.io/advanced_homework/counter.html">Counter Example</a> &nbsp;
+<a href="https://yavuzselimgugen.github.io/advanced_homework/CW2.html">CW2</a> &nbsp;
+<a href="https://yavuzselimgugen.github.io/advanced_homework/CW3.html">CW3</a>
+</p>
+
+<script>
+"use strict";
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  toString() {
+    return "("+this.x +" ," +this.y+")"
+  }
+}
+
+class Point3D extends Point {
+  constructor(x, y, z) {
+      super(x,y);
+      this.z = z;
+  }
+  toString() {
+    return "("+this.x +" ," +this.y+", "+this.z +")"
+  }
+}
+
+class Distance {
+  constructor(km = 0) {
+    this.km = km;
+  }
+  get Km() {
+    return "Km: "+km;
+  }
+  get Mile() {
+    return Math.round(Number(this.km) * 0.62);
+  }
+  set Mile(val = 10){
+    this.km = Math.round(val * 1064);
+  }
+
+  toString() {
+    //return this.Mile+"";
+    return this.km + " km is " + this.Mile +" miles";
+  }
+}
+var a, b, c, code;  //global variables
+function init() {
+    let
+       len = 123, name = "Circle", pi = Math.PI,
+       sqrt = Math.sqrt, power = Math.pow;
+    a = [0, 11, "22", "abc"];
+    c = {len, name, pi, sqrt, power};
+    MENU = new Async(); //global
+    display(MENU);
+    display(new CW4());
+    display(MENU);
+}
+    docName.innerText = "Inspector "+VERSION;
+    try {
+        inspect(document.body, init); //makes the table
+        //inp.value = "new Number(c.pi)";
+    } catch(e) {
+        reportError(e);
+    }
+</script>
+
+<p><input type=file multiple onChange='fileSelect(this)' />
+</p><p>
+</p>
+<pre id=disp1></pre>
+<img id=disp2 />
+
+</body>
+</html>
