@@ -1,9 +1,6 @@
 "use strict";
 console.log("Database.js is working");
 
-const STUDENTS = [];
-const COURSES = [];
-
 function report(msg, id, list) {
     // out.innerHTML += "<br>"; msg += " ";
     // out.appendChild(document.createTextNode(msg));
@@ -47,16 +44,16 @@ function parseCourses (line) {
     for (var i = 3; i < b.length; i++) {
       rooms.push(b[i]);
     }
-    return {name, time, date, rooms}
+    return new Course(name, time, date, rooms);
 }
 
 function addCourses(txt) {
     let a = txt.split("\n");
     for(let s of a) {
       let course = parseCourses(s);
-      COURSES.push(course);
+      db.addCrsToMap(course);
     }
-    db.convertCrsToMap();
+
     // report(msg + keys.length+" students");
 }
 
@@ -66,21 +63,17 @@ function parseStudent(line) {
     let courses = [];
     for (let i=3; i<b.length; i++)
         courses.push(b[i]);
-    return {id, name, gpa, courses};
+    return new Student(id, name, gpa, courses);
 }
 
 function addStudents(txt) {
     let a = txt.split("\n");
     for (let s of a) {
       let std = parseStudent(s);
-      STUDENTS.push(std);
+      db.addStuToMap(std);
     }
-    db.convertStuToMap();
-    // report(msg + keys.length+" students");
-}
 
-function find () {
-  db.findStu();
+    // report(msg + keys.length+" students");
 }
 
 class Course {
@@ -112,25 +105,123 @@ class Database {
     this.stu_map = new Map();
     this.course_map = new Map();
   }
-  convertStuToMap() {
-    console.log("Converting Students to a map object is starting.")
-    for(var i =0; i < STUDENTS.length; i++) {
-      this.stu_map.set(STUDENTS[i].id, STUDENTS[i]);
-    }
-    console.log("Converting Students to a map object is completed.")
+  addStuToMap(stu) {
+      this.stu_map.set(stu.id, stu);
   }
-  convertCrsToMap () {
-    console.log("Converting Courses to a map object is starting.")
-    for(let i of COURSES) {
-      this.course_map.set(i.name, i);
-    }
-    console.log("Converting Courses to a map object is completed.")
+  addCrsToMap (course) {
+    this.course_map.set(course.name, course);
   }
-  findStu () {
-    let key = search_key.value;
-    console.log(this.stu_map.get(key));
+  findStu (key) {
+    let result = this.stu_map.get(key)
+    console.log(result);
+    // document.getElementById("DisplayStu").innerHTML += console.table(result);
+    return result;
+  }
+  getStuCourses (key) {
+    let stu = this.findStu(key);
+    console.log(stu);
+    return stu.courses;
+  }
+
+  getStuSchedule (key) {
+    let stu = this.findStu(key);
+    let list = ""
+    for (let c of stu.courses) {
+      let course = this.course_map.get(c)
+      console.log(course)
+      list+= (course.name)+" "+(course.date)+" "+ course.time +", ";
+    }
+    return list;
+  }
+  stuListOfCourse (key) {
+    let list = [];
+    // this.stu_map
+    for(let s of this.stu_map.values()){
+      if(s.courses.includes(key)){
+        list.push(s.id+" "+s.name);
+      }
+    }
+    console.log(list);
+    return list;
+  }
+  random () {
+    var arr = Array.from(this.stu_map);
+    return arr[[Math.floor(Math.random()*arr.length)]][0]
+  }
+
+  randomRoom() {
+    var arr = Array.from(this.course_map);
+    return arr[[Math.floor(Math.random()*arr.length)]][1].rooms[0];
+  }
+
+  numberGPA (key) {
+    var counter = 0;
+    for(let s of this.stu_map.values()) {
+      if(key < s.gpa){
+          counter ++;
+      }
+    }
+    console.log(counter)
+    return counter
+  }
+  crsListOfRoom (key) {
+    var list = [];
+    for(let c of this.course_map.values()) {
+      if(c.rooms.includes(key)){
+        list.push(c.name);
+      }
+    }
+    console.log(list);
+    return list;
+  }
+
+  crsNumbrOfRoom (key) {
+    let counter = 0;
+    for(let c of this.course_map.values()) {
+      if(c.rooms.includes(key)){
+        counter++;
+      }
+    }
+    console.log(counter);
+    return counter;
   }
 }
+
 readData("Students.txt");
 readData("Courses.txt");
 var db = new Database();
+
+// Window Functions Declared Below
+
+function random() {
+  RandomStu.innerText = db.random();
+}
+
+function randomRoom() {
+  RandomRoom.innerText = (db.randomRoom());
+}
+
+function numberGPA () {
+  DPAID.innerText = db.numberGPA(gpa_key.value)
+}
+
+function find () {
+  DisplayStu.innerText = db.findStu(document.getElementById('stu_key').value).name;
+}
+
+function getStuCourses() {
+  StuCourses.innerText = db.getStuCourses(document.getElementById('stu_key').value);
+}
+
+function getStuSchedule() {
+  StuSchedule.innerText = db.getStuSchedule(document.getElementById('stu_key').value);
+}
+function stuListOfCourse() {
+  StuList.innerText = db.stuListOfCourse(document.getElementById('course_key').value);
+}
+function crsListOfRoom() {
+  crsList.innerText = db.crsListOfRoom(document.getElementById('room_key').value)
+}
+function crsNumbrOfRoom() {
+numberRoom.innerText=  db.crsNumbrOfRoom(document.getElementById('room_key').value)
+}
