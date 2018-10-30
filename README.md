@@ -9,3 +9,5 @@ advanced_homework
 [CW3](https://yavuzselimgugen.github.io/advanced_homework/CW3/inspector.html)
 <br>
 [CW4](https://yavuzselimgugen.github.io/advanced_homework/CW4/index.html)
+<br>
+.[HW2](https://yavuzselimgugen.github.io/advanced_homework/HW2/database.html)
