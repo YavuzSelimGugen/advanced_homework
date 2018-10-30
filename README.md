@@ -10,4 +10,4 @@ advanced_homework
 <br>
 [CW4](https://yavuzselimgugen.github.io/advanced_homework/CW4/index.html)
 <br>
-.[HW2](https://yavuzselimgugen.github.io/advanced_homework/HW2/database.html)
+[HW2](https://yavuzselimgugen.github.io/advanced_homework/HW2/database.html)
