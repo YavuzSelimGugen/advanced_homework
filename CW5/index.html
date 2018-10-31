@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Read local file </title>
+</head>
+
+<style>
+  .thumb {
+     width: 400px;
+     border: 1px solid #000;
+     margin: 10px 5px 0 0;
+  }
+</style>
+<script type="text/javascript" src="main.js"></script>
+
+<body>
+
+<h2 id=title></h2>
+
+<input type=file id=button onChange='fileSelect(this)' multiple/>
+<p>
+<output id=msg>Select text or image </output>
+<output id=out></output>
+<p id="result"></p>
+</p>
+
+<hr>
+
+<input type=text id=url value="test.txt">
+<!--onChange="readText()"-->
+
+<input type=button value="text" onClick="readText()">
+<input type=button value="blob" onClick="readBlob()">
+<input type=button id=state style="visibility: hidden">
+
+<input type=button value="Comparison" onClick="comparison()">
+<pre id=outpre></pre>
+
+<script>
+    title.innerText = document.title;
+    // sample2.innerText = fileSelect.toString();
+    // sample.innerText = readText+"\n"+readBlob;
+</script>
+
+</body>
+</html>
