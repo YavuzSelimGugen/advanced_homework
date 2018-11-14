@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="../CW4/Database.js"></script>
+    <title>Set Intersection </title>
+
+<script>
+"use strict";
+const url = "https://maeyler.github.io/JS/data/";
+const array = [], set = new Set();
+var my_map = new Map();
+function readData(file) {
+    console.log("readData "+file);
+    fetch(url+file)
+        .then(r => r.text(), console.log)
+        .then(addStudents, console.log);
+}
+function parseStudent(line) {
+    let b = line.split("\t");
+    let id = b[0], name = b[1], gpa = b[2];
+    let std = new Student(id, name, gpa);
+    let list = [];
+    for (let i=3; i<b.length; i++)
+        list.push(b[i]);
+    std.courses = list
+    return std
+}
+function addStudents(txt) {
+    let msg = "\nData contains ";
+    msg += txt.length+" chars, ";
+    let a = txt.split("\n");
+    msg += a.length+" lines \n";
+    for (let s of a) {
+      let std = parseStudent(s);
+
+      array.push(std.id);
+      my_map.set(std.id, std);
+    }
+    msg += array.length+" students, "
+    msg += set.size+" distinct names"
+    out.innerText += msg
+}
+function generateRandom(bullet) {
+  var result =new Array();
+  // let a = bullet;
+  let rnd;
+  let sabit = 215170000;
+  let id;
+  for (var i = 0; i <bullet ; i++) {
+    id =0;
+    rnd = Math.floor(Math.random() * 10000)
+    id = rnd + sabit
+    result.push(id);
+  }
+  console.log(result);
+  return result;
+}
+function intersect1(a, b) { //array
+    let sarr = new Set();
+    let smap = new Set();
+    let bullet =10000;
+    let randoms =generateRandom(bullet);
+    let id;
+    let tarr = performance.now()
+    for (var i = 0; i <bullet ; i++) {
+        // console.log(randoms[i]);
+        id = randoms[i];
+        if(a.includes(id+"")){
+          sarr.add(id);
+        }
+      }
+    tarr = performance.now() - tarr
+    let tmap = performance.now()
+      for (var i = 0; i <bullet ; i++) {
+          // console.log(randoms[i]);
+          id = randoms[i];
+          if(b.has(id+"")){
+            smap.add(id);
+          }
+        }
+    tmap = performance.now() - tmap;
+
+    let s = "Array: "+tarr.toPrecision(3)+" msec "+sarr.size+
+    " Map: "+tmap.toPrecision(3)+" msec "+smap.size;
+    out.innerText += "\n"+s; console.log(s)
+
+}
+
+function timing(f) {
+    let x = f(array, my_map)  //calculate intersection by itself
+}
+</script>
+</head>
+
+<body>
+<h2 id=title></h2>
+<button onClick='timing(intersect1)'>Method</button>
+
+<p id=out>Question 3 in the exam</p>
+<hr />
+<b>Sample code</b>
+<pre id=sample></pre>
+<hr />
+
+<script>
+    title.innerText = document.title;
+    sample.innerText = intersect1+"\n";
+    readData("Students.txt")
+</script>
+
+</body>
+</html>
