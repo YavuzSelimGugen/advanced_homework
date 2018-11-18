@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <div>
+        <button onClick="canvas.animate(t1,duration)">
+            Rectangle
+        </button>
+        <button onClick="canvas.animate(t5, duration)">Triangle</button>
+        <button onClick="canvas.animate(t2, 5000)">rotate</button>
+        <button onClick="canvas.animate(t3, 
+            { 
+            duration,
+            iterations: Infinity
+            })">
+            background
+        </button>
+        <br><br>
+        Duration: 
+        <input type="number" onchange="changeDuration()" value="1000" id="x-duration">
+    </div>
+    
+    <p>
+        
+        <div class="canvas", id="canvas">
+        </div>
+    </p>
+    
+</body>
+</html>

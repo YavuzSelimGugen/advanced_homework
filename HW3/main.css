@@ -1,0 +1,9 @@
+.canvas {
+    background-color: blue;
+    height: 35px;
+    width: 35px;
+    margin-left: 50%;
+    margin-right: 50%;
+    margin-top: 50%;
+    border-radius: 25px;
+}
