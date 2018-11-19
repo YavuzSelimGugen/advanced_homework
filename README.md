@@ -15,3 +15,5 @@ advanced_homework
 [CW5](https://yavuzselimgugen.github.io/advanced_homework/CW5/index.html)
 <br>
 [CW6](https://yavuzselimgugen.github.io/advanced_homework/CW6/Timing.html)
+<br>
+[HW3](https://yavuzselimgugen.github.io/advanced_homework/HW3/index.html)
