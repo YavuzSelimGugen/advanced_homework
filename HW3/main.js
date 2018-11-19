@@ -16,9 +16,6 @@ const
     background: ["yellow", "cyan", "magenta", "yellow"],
     borderColor: ["yellow", "cyan", "magenta", "yellow"]},
   t2 = { transform: ["rotate(0)", "rotate(360deg)"] },
-  t3 = { background: ["yellow", "cyan", "magenta", "yellow"],
-        borderColor: ["yellow", "cyan", "magenta", "yellow"] },
-  t4 = { fontSize: ["100%", "150%", "100%", "75%", "100%"] },
   t5 = {transform: [
     "translate(0px,0px)", 
     "translate(200px,0px)", 
@@ -27,7 +24,7 @@ const
   ],
   borderWidth: ["50px 25px 0 25px", "50px 25px 0 25px"],
   borderColor: ["yellow black black black", "magenta black black black"],
-  background: ["yellow","magenta"],
+  background: ["yellow","magenta","orange"],
   width: ["0px", "0px"],
   height: ["0px", "0px"]}
 

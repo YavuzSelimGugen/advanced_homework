@@ -19,17 +19,16 @@
         <button onClick="canvas2.animate(t5, { 
             duration,
             iterations: Infinity
-            })">Triangle</button>
-        
+            })">Triangle
+        </button>
         <br><br>
         <p style="color: wheat">
             Duration:
             <input type="number" onchange="changeDuration()" value="1000" id="x-duration">
         </p> 
-        
+        <div class="canvas", id="canvas2"></div> 
     </div>
-    
-    <p>
+    <p style="padding-top:17%">
         <p style="color: wheat">
             Earth Rotation Rate:
             <input type="number" onchange="init()" value="60" id="x-earthspeed">
@@ -38,10 +37,7 @@
             Moon Rotation Rate:
             <input type="number" onchange="init()" value="6" id="x-moonspeed">
         </p>
-        <div class="canvas", id="canvas2">
-        </div>
-        
-        <canvas id="canvas" width="300" height="300"></canvas>
+        <canvas id="canvas" style="" width="300" height="300"></canvas>
     </p>
     
 </body>
