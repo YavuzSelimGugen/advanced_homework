@@ -8,29 +8,40 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
-<body>
+<body style="background-color: black">
     <div>
-        <button onClick="canvas.animate(t1,duration)">
-            Rectangle
-        </button>
-        <button onClick="canvas.animate(t5, duration)">Triangle</button>
-        <button onClick="canvas.animate(t2, 5000)">rotate</button>
-        <button onClick="canvas.animate(t3, 
-            { 
+        <button onClick="canvas2.animate(t1,{ 
             duration,
             iterations: Infinity
             })">
-            background
+            Square
         </button>
+        <button onClick="canvas2.animate(t5, { 
+            duration,
+            iterations: Infinity
+            })">Triangle</button>
+        
         <br><br>
-        Duration: 
-        <input type="number" onchange="changeDuration()" value="1000" id="x-duration">
+        <p style="color: wheat">
+            Duration:
+            <input type="number" onchange="changeDuration()" value="1000" id="x-duration">
+        </p> 
+        
     </div>
     
     <p>
-        
-        <div class="canvas", id="canvas">
+        <p style="color: wheat">
+            Earth Rotation Rate:
+            <input type="number" onchange="init()" value="60" id="x-earthspeed">
+        </p>
+        <p style="color: wheat">
+            Moon Rotation Rate:
+            <input type="number" onchange="init()" value="6" id="x-moonspeed">
+        </p>
+        <div class="canvas", id="canvas2">
         </div>
+        
+        <canvas id="canvas" width="300" height="300"></canvas>
     </p>
     
 </body>
