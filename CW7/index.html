@@ -22,6 +22,10 @@
     <button type="button" name="button" onclick="buildTableNonParam()">Create Table</button>
     <br>
     <table id="tb" style="border: 1px solid black;"></table>
+    <br>
+    <b>Sample code</b>
+    <pre id=sample></pre>
+
 
 <script>
 console.log("working")
@@ -62,6 +66,7 @@ const Lessons = [
       x.appendChild(table);
 
     }
+    sample.innerText = buildTable.toString();
     </script>
   </body>
 </html>
