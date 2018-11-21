@@ -1,6 +1,6 @@
 {
   "name": "PWA Deneme",
-  "start_url": "advanced_homework/CW7/index.html",
+  "start_url": "/advanced_homework/CW7/index.html",
   "display": "standalone",
   "background_color": "blue",
   "icons": [
