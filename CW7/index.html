@@ -1,24 +1,10 @@
 <html>
   <head>
     <!--Deneme 1.0-->
-    <link rel="manifest" href="manifest.json">
     <title>CW7</title>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .register('sw.js')
-          .then((reg) => { console.log('SW Registered', reg) })
-          .catch(console.log)
-      }
-  </script>
   </head>
   <body>
-    My PWA Page
-    <br>
-    <a href="https://yavuzselimgugen.github.io/advanced_homework/HW3/index.html">HW3</a>
-    <br>
-    <a href="https://yavuzselimgugen.github.io/advanced_homework/">My Repo</a>
-    <br>
+
     <button type="button" name="button" onclick="buildTableNonParam()">Create Table</button>
     <br>
     <table id="tb" style="border: 1px solid black;"></table>
