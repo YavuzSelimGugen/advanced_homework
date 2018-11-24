@@ -1,4 +1,4 @@
-const CACHE ='JS'
+const CACHE ='icon'
 function installCB(e) {
   console.log('install oldu', e.request);
 }
