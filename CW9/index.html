@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CW9</title>
+
+  <style>
+    svg {
+        background: cyan;
+        font: 10px arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Using SVG</h2>
+<svg id='svg' width='340' height='100'>
+  <g id="vim">
+    <circle id="cr1" cx='50' cy='50' r='40'
+    style='fill:yellow;stroke:blue;stroke-width:4' />
+
+  </g>
+
+  <rect id="rec1" x='110' y='10' width='100' height='80'
+  style='fill:pink;stroke:red;stroke-width:5' />
+
+</svg>
+
+<p>SVG elements are controllable and scalable</p>
+<button type="button" name="button" onclick="drw">WS</button>
+<br>
+<input id="slider" type="range" min="1" max="100" value="50" onchange="resize()">
+<br>
+SVG bg:
+<input id="clr" type="color" value="#ff0000" onchange="f1()">
+<br><br>
+Circle bg:
+<input id="clr1" type="color" value="#ff0000" onchange="f2()">
+<br><br>
+Rectangle bg:
+<input id="clr2" type="color" value="#ff0000" onchange="f3()">
+
+
+<hr />
+<p id="sample"></p>
+<p>Ref: <i>Eloquent JavaScript</i>,
+<a href="http://eloquentjavascript.net/17_canvas.html"
+   target="ExternalDocument"> Chap 17</a>
+</p>
+
+<script>
+"use strict";
+
+function resize() {
+  console.log(slider.value);
+  svg.style.width = slider.value * 4;
+  svg.style.height = slider.value * 3;
+
+  cr1.style.r = slider.value;
+  cr1.style.cx = slider.value;
+  cr1.style.cy = slider.value;
+
+  rec1.style.x = slider.value * 2;
+  rec1.style.y = slider.value;
+  rec1.style.width = slider.value;
+  rec1.style.height = slider.value;
+
+}
+function f1 () {
+    console.log(clr.value);
+    svg.style.background = clr.value;
+
+}
+function f2() {
+  cr1.style.fill = clr1.value;
+}
+function f3 () {
+  rec1.style.fill = clr2.value;
+}
+function drw () {
+
+}
+</script>
+
+</body>
+</html>
