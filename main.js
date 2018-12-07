@@ -24,7 +24,7 @@ var class_works = [
     {
         "name": "Classwork5",
         "meta": "Opening a remote file and some local files together and makes comparison",
-        "link": "CW5/main.html"
+        "link": "CW5/index.html"
     },
     {
         "name": "Classwork6",
