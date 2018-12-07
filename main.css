@@ -9,3 +9,15 @@ html *
 {
    font-family: 'Courier New', Courier, monospace !important;
 }
+a {
+    color: hotpink;
+    text-decoration: none;
+  }
+  a:visited {
+    color: rgb(0, 143, 0);
+    text-decoration: none;
+  }
+  a:hover {
+    color: hotpink;
+    text-decoration: underline;
+  }
