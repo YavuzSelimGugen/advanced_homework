@@ -1,0 +1,12 @@
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #f5fffa;
+    border-radius: .3rem;
+}
+
+html *
+{
+   
+   font-family: 'Courier New', Courier, monospace !important;
+}

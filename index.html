@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <link rel="manifest" href="manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .register('sw.js')
-          .then((reg) => { console.log('SW Registered', reg) })
-          .catch(console.log)
-      }
+
+<head>
+  <link rel="stylesheet" href="main.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('sw.js')
+        .then((reg) => { console.log('SW Registered', reg) })
+        .catch(console.log)
+    }
   </script>
-    <meta charset="utf-8">
-    <link rel="icon" href="icon.ico">
-    <title>Index</title>
-  </head>
-  <body>
-    <b>My PWA Homework Page v1.3:</b>
-    <br>
-    <a href="https://github.com/YavuzSelimGugen/advanced_homework">Codes of my repo</a>
-    <br>
-    <hr>
-    <br>
-    Class Works:
-    <hr>
-    <a href="counter.html">CW1</a>
-    <br>
-    <a href="CW2.html">CW2</a>
-    <br>
-    <a href="CW3/inspector.html">CW3</a>
-    <br>
-    <a href="CW4/index.html">CW4</a>
-    <br>
-    <a href="CW5/index.html">CW5</a>
-    <br>
-    <a href="CW6/Timing.html">CW6</a>
-    <br>
-    <a href="CW7/index.html">CW7</a>
-    <br>
-    <a href="CW9/index.html">CW9</a>
-    <br>
+  
+  <meta charset="utf-8">
+  <link rel="icon" href="icon.ico">
+  <title>Index</title>
+</head>
 
-    Homeworks:
-    <hr>
-    <a href="HW1.html">HW1</a>
-    <br>
-    <a href="HW2/database.html">HW2</a>
-    <br>
-    <a href="HW3/index.html">HW3</a>
+<body>
 
-  </body>
+  <div id="" class="jumbotron">
+    <h3 style="text-align: center">
+      Yavuz Selim Gügen <br>
+      Advanced Programming Class Repo. Page <br>
+      <a href="https://github.com/YavuzSelimGugen/advanced_homework">
+        <img src="GitHub-Mark-32px.png" alt="">
+      </a> 
+    </h3>
+    
+    <div id="div_list"></div> 
+    Read Recommendations:<br>
+    <a href="https://engineering.videoblocks.com/web-architecture-101-a3224e126947?ref=abhimanyu">
+      Web Architecture 101
+    </a>
+    <br>
+    <a href="https://blog.usejournal.com/little-known-features-of-javascript-901665291387?fbclid=IwAR1ASI0RTm0SBQehYkmm5ha-QFnMOi0Da-OyT6-_ex5ifGoA9nGNveJecHE">
+        Little known features of JavaScript
+    </a>
+    <br>
+    <a href="https://resilientwebdesign.com/introduction/">
+      Resilient Web Design
+    </a>
+    <br>
+    
+  </div>
+  <script src="main.js"></script>
+</body>
+
 </html>
