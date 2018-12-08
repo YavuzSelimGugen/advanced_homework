@@ -10,15 +10,15 @@ html *
    font-family: 'Courier New', Courier, monospace !important;
 }
 a {
-    color: hotpink;
+    color: #7A3B00;
     text-decoration: none;
   }
   a:visited {
-    color: rgb(0, 143, 0);
+    color: #0A0AFF;
     text-decoration: none;
   }
   a:hover {
-    color: hotpink;
+    color: #99004C;
     text-decoration: underline;
   }
 
