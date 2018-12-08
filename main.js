@@ -72,7 +72,7 @@ for (var i = 0; i < class_works.length; i++) {
     obj = class_works[i];
     var node = document.createElement("LI");
     node.innerHTML += 
-    "<a href ='"+obj.link+"'>"+obj.name+"</a>" + ": "+ obj.meta
+    "<a href ='"+obj.link+"'>"+obj.name+"</a>" + ": "+ obj.meta+"<hr>"
     cw.appendChild(node); 
 }
 
