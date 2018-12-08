@@ -1,7 +1,7 @@
 .jumbotron {
     padding: 2rem 1rem;
     margin-bottom: 2rem;
-    background-color: #f5fffa;
+    background-color: #e9ecef;
     border-radius: .3rem;
 }
 
@@ -21,3 +21,11 @@ a {
     color: hotpink;
     text-decoration: underline;
   }
+
+  .container {
+    
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
