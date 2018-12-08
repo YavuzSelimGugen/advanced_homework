@@ -3,6 +3,8 @@
   "start_url": "/advanced_homework/index.html",
   "display": "standalone",
   "background_color": "purple",
+  "short_name": "PWA",
+  "theme_color": "purple",
   "icons": [
     {
       "src": "Icon-1024.png",
