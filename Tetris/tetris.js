@@ -170,25 +170,27 @@ class Piece {
                     break;
                 }
                 // we lock the piece
-                console.log((this.y + r)+"|"+(this.x + c)+"="+", "+this.color);
+                //console.log((this.y + r)+"|"+(this.x + c)+"="+", "+this.color);
                 // !!!HATA BURADA BOARD DEĞİŞMİYOR!!!
                 board[this.y + r][this.x + c] = this.color;
-                console.log("===LOCK===");
-                console.log(board[this.y + r][this.x + c]);
-                console.log("===LOCK===");
+                //console.log("===LOCK===");
+                //console.log(board[this.y + r][this.x + c]);
+                //console.log("===LOCK===");
             }
         }
         //console.log("===LOCK===");
         //console.log(board);
         //console.log("===LOCK===");
         // remove full rows
+        
         let y = this.y;
         for (r = 0; r < ROW; r++) {
             let isRowFull = true;
             for (c = 0; c < COL; c++) {
-                isRowFull = isRowFull && (board[r][c] != VACANT[0] || board[r][c] != VACANT[1]);
+                isRowFull = isRowFull && (board[r][c] != VACANT[0] && board[r][c] != VACANT[1]);
             }
             if (isRowFull) {
+                console.log("ROW FULL")
                 // if the row is full
                 // we move down all the rows above it
                 for (y = r; y > 1; y--) {
@@ -207,6 +209,7 @@ class Piece {
                 }
             }
         }
+        
         // update the board
         drawBoard();
 
