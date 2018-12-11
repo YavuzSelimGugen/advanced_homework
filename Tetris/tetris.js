@@ -54,11 +54,11 @@ function drawBoard() {
 const PIECES = [
     [Z, "#b300b3"],
     [S, "#7fff00"],
-    [T, "#FFC200"],
+    [T, "teal"],
     [O, "violet"],
-    [L, "teal"],
-    [I, "cyan"],
-    [J, "#e34234"]
+    [L, "#FFC200"],
+    [I, "yellow"],
+    [J, "#e6b000"]
 ];
 
 
