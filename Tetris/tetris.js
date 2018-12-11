@@ -19,23 +19,27 @@ function drawSquare(x, y, color) {
 // create the board
 
 var board = [];
-for (r = 0; r < ROW; r++) {
-    board[r] = [];
-    for (c = 0; c < COL; c++) {
-        if (c % 2 == 0) {
-            board[r][c] = VACANT[0];
-        } else {
-            board[r][c] = VACANT[1];
+function constructBoard() {
+    for (r = 0; r < ROW; r++) {
+        board[r] = [];
+        for (c = 0; c < COL; c++) {
+            if (c % 2 == 0) {
+                board[r][c] = VACANT[0];
+            } else {
+                board[r][c] = VACANT[1];
+            }
+    
         }
-
     }
 }
 
+
+
 // draw the board
 function drawBoard() {
-    console.log("===DrawBoard F===");
-    console.log(board);
-    console.log("===DrawBoard F===");
+    //console.log("===DrawBoard F===");
+    //console.log(board);
+    //console.log("===DrawBoard F===");
     for (r = 0; r < ROW; r++) {
         for (c = 0; c < COL; c++) {
             drawSquare(c, r, board[r][c]);
@@ -71,27 +75,28 @@ class Piece {
         this.x = 3;
         this.y = -2;
     }
+    
     fill(color) {
-        for (r = 0; r < this.activeTetromino.length; r++) {
-            for (c = 0; c < this.activeTetromino.length; c++) {
-                // we draw only occupied squares
-                if (this.activeTetromino[r][c]) {
-                    drawSquare(this.x + c, this.y + r, color);
+        if(color[0] == "GREY") {
+            for (r = 0; r < this.activeTetromino.length; r++) {
+                for (c = 0; c < this.activeTetromino.length; c++) {
+                    // we draw only occupied squares
+                    if (this.activeTetromino[r][c]) {
+                        if((this.x + c) % 2 == 0) {
+                            drawSquare(this.x + c, this.y + r, color[0]);
+                        } else {
+                            drawSquare(this.x + c, this.y + r, color[1]);
+                        }
+                    }
                 }
             }
-        }
-    }
-    unfill(vacant) {
-        for (r = 0; r < this.activeTetromino.length; r++) {
-            for (c = 0; c < this.activeTetromino.length; c++) {
-                // we draw only occupied squares
-                if (this.activeTetromino[r][c]) {
-                    if(c % 2 == 0) {
-                        drawSquare(this.x + c, this.y + r, vacant[1]);
-                    } else {
-                        drawSquare(this.x + c, this.y + r, vacant[0]);
+        } else {
+            for (r = 0; r < this.activeTetromino.length; r++) {
+                for (c = 0; c < this.activeTetromino.length; c++) {
+                    // we draw only occupied squares
+                    if (this.activeTetromino[r][c]) {
+                        drawSquare(this.x + c, this.y + r, color);
                     }
-                    
                 }
             }
         }
@@ -101,7 +106,7 @@ class Piece {
         this.fill(this.color);
     }
     unDraw() {
-        this.unfill(VACANT);
+        this.fill(VACANT);
     }
 
     moveDown() {
@@ -112,7 +117,7 @@ class Piece {
             this.draw();
         } else {
             // we lock the piece and generate a new one
-            console.log("Gonna Lock");
+            //console.log("Gonna Lock");
             this.lock();
             p = randomPiece();
         }
@@ -297,6 +302,7 @@ function drop() {
     }
 }
 function startGame() {
+    constructBoard()
     drawBoard();
     drop();
 }
