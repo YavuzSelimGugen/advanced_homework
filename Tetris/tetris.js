@@ -52,13 +52,13 @@ function drawBoard() {
 // the pieces and their colors
 
 const PIECES = [
-    [Z, "red"],
-    [S, "green"],
-    [T, "yellow"],
-    [O, "blue"],
-    [L, "purple"],
+    [Z, "#b300b3"],
+    [S, "#7fff00"],
+    [T, "#FFC200"],
+    [O, "violet"],
+    [L, "teal"],
     [I, "cyan"],
-    [J, "orange"]
+    [J, "#e34234"]
 ];
 
 
