@@ -5,7 +5,7 @@ const ROW = 20;
 const COL = COLUMN = 10;
 const SQ = squareSize = 20;
 // color of an empty square
-const VACANT = ["GREY", "WHITE"];
+const VACANT = ["#404040", "WHITE"];
 
 // draw a square
 function drawSquare(x, y, color) {
