@@ -56,9 +56,9 @@ const PIECES = [
     [S, "#7fff00"],
     [T, "teal"],
     [O, "violet"],
-    [L, "#FFC200"],
+    [L, "#e69500"],
     [I, "yellow"],
-    [J, "#e6b000"]
+    [J, "#e34234"]
 ];
 
 
