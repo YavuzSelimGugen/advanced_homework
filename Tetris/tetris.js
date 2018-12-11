@@ -5,7 +5,7 @@ const ROW = 20;
 const COL = COLUMN = 10;
 const SQ = squareSize = 20;
 // color of an empty square
-const VACANT = ["#003300", "#999966"];
+const VACANT = ["#808080", "#bfbfbf"];
 
 // draw a square
 function drawSquare(x, y, color) {
@@ -53,7 +53,7 @@ function drawBoard() {
 
 const PIECES = [
     [Z, "#b300b3"],
-    [S, "#7fff00"],
+    [S, "#66cc00"],
     [T, "teal"],
     [O, "violet"],
     [L, "#0066ff"],
