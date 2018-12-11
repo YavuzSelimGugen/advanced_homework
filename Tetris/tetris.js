@@ -77,7 +77,7 @@ class Piece {
     }
     
     fill(color) {
-        if(color[0] == "GREY") {
+        if(color[0] == VACANT[0]) {
             for (r = 0; r < this.activeTetromino.length; r++) {
                 for (c = 0; c < this.activeTetromino.length; c++) {
                     // we draw only occupied squares
