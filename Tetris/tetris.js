@@ -1,6 +1,10 @@
 const cvs = document.getElementById("tetris");
 const ctx = cvs.getContext("2d");
-var gameSpeed = 500;
+var gameSpeed = 1000;
+var score = 0;
+var level = 0;
+var pScore = document.getElementById('score')
+var pLevel = document.getElementById('level')
 const ROW = 20;
 const COL = COLUMN = 10;
 const SQ = squareSize = 20;
@@ -212,6 +216,13 @@ class Piece {
                     }
 
                 }
+                score += 10;
+                if( score % 50 == 0) {
+                  gameSpeed = gameSpeed / 1.1;
+                  level++;
+                }
+                pScore.innerHTML = "Score: " + score;
+                pLevel.innerHTML = "Level: " + level;
             }
         }
 
@@ -317,6 +328,11 @@ function drop() {
     }
 }
 function startGame() {
+    gameSpeed = 1000;
+    score = 0;
+    level = 1;
+    pScore.innerHTML = "Score: " + score;
+    pLevel.innerHTML = "Level: " + level;
     constructBoard()
     drawBoard();
     drop();
