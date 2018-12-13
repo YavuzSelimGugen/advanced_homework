@@ -287,7 +287,9 @@ function CONTROL(event) {
 }
 
 function CONTROLMOBILE (event) {
-  console.log(event)
+  var x = event.touches[0].clientX;
+  var y = event.touches[0].clientY;
+  document.getElementById("demo").innerHTML = x + ", " + y;
 }
 
 // drop the piece every 1sec
