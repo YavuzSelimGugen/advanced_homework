@@ -289,7 +289,14 @@ function CONTROL(event) {
 function CONTROLMOBILE (event) {
   var x = event.touches[0].clientX;
   var y = event.touches[0].clientY;
+  if(x - prex < 0) {
+      document.getElementById("demo").innerHTML = "x küçük sıfır"
+  } else if (x - prex > 0) {
+    document.getElementById("demo").innerHTML = "x büyük sıfır"
+  }
 
+  var prex = x
+  var prey = y
   document.getElementById("demo").innerHTML = event.touches[0].toString();
 }
 
