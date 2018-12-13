@@ -290,7 +290,7 @@ function CONTROLMOBILE (event) {
   var x = event.touches[0].clientX;
   var y = event.touches[0].clientY;
 
-  document.getElementById("demo").innerHTML = event.touches.toString();
+  document.getElementById("demo").innerHTML = event.touches[0].toString();
 }
 
 // drop the piece every 1sec
