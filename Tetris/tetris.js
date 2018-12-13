@@ -28,7 +28,7 @@ function constructBoard() {
             } else {
                 board[r][c] = VACANT[1];
             }
-    
+
         }
     }
 }
@@ -75,7 +75,7 @@ class Piece {
         this.x = 3;
         this.y = -2;
     }
-    
+
     fill(color) {
         if(color[0] == VACANT[0]) {
             for (r = 0; r < this.activeTetromino.length; r++) {
@@ -187,7 +187,7 @@ class Piece {
         //console.log(board);
         //console.log("===LOCK===");
         // remove full rows
-        
+
         let y = this.y;
         for (r = 0; r < ROW; r++) {
             let isRowFull = true;
@@ -214,7 +214,7 @@ class Piece {
                 }
             }
         }
-        
+
         // update the board
         drawBoard();
 
@@ -225,7 +225,7 @@ class Piece {
             for (c = 0; c < piece.length; c++) {
                 // if the square is empty, we skip it
                 if (!piece[r][c]) {
-                    
+
                     continue;
                 }
                 // coordinates of the piece after movement
@@ -235,17 +235,17 @@ class Piece {
 
                 // conditions
                 if (newX < 0 || newX >= COL || newY >= ROW) {
-                    
+
                     return true;
                 }
                 // skip newY < 0; board[-1] will crush our game
                 if (newY < 0) {
-                    
+
                     continue;
                 }
                 // check if there is a locked piece already in place
                 if (board[newY][newX] != VACANT[0] && board[newY][newX] != VACANT[1]) {
-                    
+
                     return true;
                 }
             }
@@ -269,6 +269,7 @@ let p = randomPiece();
 // CONTROL the piece
 
 document.addEventListener("keydown", CONTROL);
+document.addEventListener("ontouchmove", CONTROLMOBILE);
 
 function CONTROL(event) {
     if (event.keyCode == 37) {
@@ -283,6 +284,10 @@ function CONTROL(event) {
     } else if (event.keyCode == 40) {
         p.moveDown();
     }
+}
+
+function CONTROLMOBILE (event) {
+  console.log(event)
 }
 
 // drop the piece every 1sec
