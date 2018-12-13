@@ -310,6 +310,7 @@ function drop() {
 }
 function startGame() {
     constructBoard()
+    p = randomPiece();
     drawBoard();
     drop();
 }
