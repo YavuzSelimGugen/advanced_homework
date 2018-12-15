@@ -218,7 +218,7 @@ class Piece {
                 }
                 score += 10;
                 if( score % 50 == 0) {
-                  gameSpeed = gameSpeed / 1.1;
+                  gameSpeed = gameSpeed / 1.3;
                   level++;
                 }
                 pScore.innerHTML = "Score: " + score;

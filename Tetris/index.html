@@ -4,19 +4,28 @@
     <title>Tetris Game JS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <script>
+        window.addEventListener("keydown", function (e) {
+            // space and arrow keys
+            if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                e.preventDefault();
+            }
+        }, false);
+    </script>
 </head>
 
 <body>
     <div class="container">
         <div class="menu jumbotron">
             <button class="button" type="button" onclick="startGame()" name="button">Start Game</button>
+            <br>
             <input type="text" class="button" name="" placeholder="Your Name">
             <br>
             <p id="demo">DEMO5-6</p>
             <p id="score"></p>
             <p id="level"></p>
             <canvas id="tetris" width="200" height="400" ontouchmove="CONTROLMOBILE(event)">
-              Your browser does not support canvas element.
+                Your browser does not support canvas element.
             </canvas>
         </div>
 
