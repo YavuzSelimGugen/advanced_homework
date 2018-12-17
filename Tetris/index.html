@@ -17,16 +17,18 @@
 <body>
     <div class="container">
         <div class="menu jumbotron">
-            <button class="button" type="button" onclick="startGame()" name="button">Start Game</button>
-            <br>
-            <input type="text" class="button" name="" placeholder="Your Name">
-            <br>
-            <p id="demo">DEMO5-6</p>
-            <p id="score"></p>
-            <p id="level"></p>
-            <canvas id="tetris" width="200" height="400">
-                Your browser does not support canvas element.
-            </canvas>
+          <div id="gameMenu">
+            <button id="startButton" class="button" type="button" onclick="startGame()" name="button">Start Game</button>
+            <br><br>
+            <input id="nameInput" type="text" class="button" name="" placeholder="Your Name">
+          </div>
+          <div id="stats">
+            <p id="level">b</p>
+            <p id="score">v</p>
+          </div>
+          <canvas id="tetris" width="200" height="400">
+            Your browser does not support canvas element.
+          </canvas>
         </div>
 
 
@@ -34,6 +36,9 @@
 
     <script src="tetrominoes.js"></script>
     <script src="tetris.js"></script>
+    <!-- <script type="text/javascript">
+      document.getElementById("startButton").disabled = true;
+    </script> -->
 </body>
 
 </html>

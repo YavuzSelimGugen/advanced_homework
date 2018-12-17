@@ -9,7 +9,7 @@ const ROW = 20;
 const COL = COLUMN = 10;
 const SQ = squareSize = 20;
 // color of an empty square
-const VACANT = ["#808080", "#bfbfbf"];
+const VACANT = ["#999999", "#bfbfbf"];
 
 // draw a square
 function drawSquare(x, y, color) {
@@ -354,7 +354,18 @@ function drop() {
     }
 }
 function startGame() {
-    gameSpeed = 1000;
+  if(nameInput.value == "") {
+    t1 = {background: ["red", "#ff8600"]};
+    nameInput.animate(t1, {
+  // timing options
+  duration: 1000,
+  iterations: 3
+})
+
+  } else {
+    document.getElementById("gameMenu").style.display = 'none';
+    document.getElementById("stats").style.display = 'block';
+    gameSpeed = 800;
     score = 0;
     level = 1;
     pScore.innerHTML = "Score: " + score;
@@ -362,4 +373,6 @@ function startGame() {
     constructBoard()
     drawBoard();
     drop();
+  }
+
 }
