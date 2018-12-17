@@ -355,7 +355,7 @@ function drop() {
 }
 function startGame() {
   if(nameInput.value == "") {
-    t1 = {background: ["red", "#ff8600"]};
+    t1 = {background: ["red", "purple"]};
     nameInput.animate(t1, {
   // timing options
   duration: 1000,
