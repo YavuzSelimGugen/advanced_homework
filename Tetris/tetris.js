@@ -279,48 +279,6 @@ let p = randomPiece();
 
 // CONTROL the piece
 document.addEventListener("keydown", CONTROL);
-// For mobile:
-var touchX;
-var touchY;
-var touchId;
-
-document.body.addEventListener('touchstart', function (e) {
-  // e.preventDefault();
-  touchX = e.touches[0].pageX;
-  touchY = e.touches[0].pageY;
-  touchId = e.touches[0].identifier;
-});
-
-document.body.addEventListener('touchend', function (e) {
-  // e.preventDefault();
-  var touchEndX;
-  var touchEndY;
-  var touch = e.changedTouches.item(0);
-  try {
-    touchEndX = touch.pageX;
-    touchEndY = touch.pageY;
-  } catch (err) {
-    console.log(arr);
-    return;
-  }
-
-  var difX = (touchEndX - touchX);
-  var difY = (touchEndY - touchY);
-  console.log("DiffX: "+difX)
-  console.log("DiffY: "+difY)
-  if (difX > 50) {
-    p.moveRight();
-  }
-  else if(difX < -50) {
-    p.moveLeft();
-  }
-  else if(difY < -50 ) {
-    p.moveDown();
-  }
-  else if(difX == 0 && difY == 0) {
-    p.rotate();
-  }
-})
 
 function CONTROL(event) {
     if (event.keyCode == 37) {
@@ -336,20 +294,48 @@ function CONTROL(event) {
         p.moveDown();
     }
 }
+// For mobile:
+var touchX;
+var touchY;
+var touchId;
 
-function CONTROLMOBILE (event) {
-  var x = event.touches[0].clientX;
-  var y = event.touches[0].clientY;
-  if(x - prex < 0) {
-      document.getElementById("demo").innerHTML = "x küçük sıfır"
-  } else if (x - prex > 0) {
-    document.getElementById("demo").innerHTML = "x büyük sıfır"
+document.getElementById('tetris').addEventListener('touchstart', function (e) {
+  // e.preventDefault();
+  touchX = e.touches[0].pageX;
+  touchY = e.touches[0].pageY;
+  touchId = e.touches[0].identifier;
+});
+
+document.getElementById('tetris').addEventListener('touchend', function (e) {
+  // e.preventDefault();
+  var touchEndX;
+  var touchEndY;
+  var touch = e.changedTouches.item(0);
+  try {
+    touchEndX = touch.pageX;
+    touchEndY = touch.pageY;
+  } catch (err) {
+    console.log(arr);
+    return;
   }
 
-  var prex = x
-  var prey = y
-  document.getElementById("demo").innerHTML = event.touches[0].toString();
-}
+  var difX = (touchEndX - touchX);
+  var difY = (touchEndY - touchY);
+  // console.log("DiffX: "+difX)
+  // console.log("DiffY: "+difY)
+  if (difX > 50) {
+    p.moveRight();
+  }
+  else if(difX < -50) {
+    p.moveLeft();
+  }
+  else if(difY < -50 ) {
+    p.moveDown();
+  }
+  else if(difX == 0 && difY == 0) {
+    p.rotate();
+  }
+})
 
 // drop the piece every 1sec
 
