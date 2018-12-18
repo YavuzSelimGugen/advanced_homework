@@ -1,6 +1,6 @@
 const cvs = document.getElementById("tetris");
 const ctx = cvs.getContext("2d");
-var gameSpeed = 1000;
+var gameSpeed = 800;
 var score = 0;
 var level = 0;
 var pScore = document.getElementById('score')
@@ -370,6 +370,8 @@ function startGame() {
     } else {
         document.getElementById("gameMenu").style.display = 'none';
         document.getElementById("stats").style.display = 'block';
+        document.getElementById("referans").style.display = 'none';
+        
         gameSpeed = 800;
         score = 0;
         level = 1;
