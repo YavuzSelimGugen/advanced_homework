@@ -334,6 +334,8 @@ document.getElementById('tetris').addEventListener('touchend', function (e) {
     }
     else if (difY < -50) {
         p.moveDown();
+        p.moveDown();
+        p.moveDown();
     }
     else if (difX == 0 && difY == 0) {
         p.rotate();
