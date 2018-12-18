@@ -81,12 +81,12 @@ class Piece {
     }
 
     fill(color) {
-        if(color[0] == VACANT[0]) {
+        if (color[0] == VACANT[0]) {
             for (r = 0; r < this.activeTetromino.length; r++) {
                 for (c = 0; c < this.activeTetromino.length; c++) {
                     // we draw only occupied squares
                     if (this.activeTetromino[r][c]) {
-                        if((this.x + c) % 2 == 0) {
+                        if ((this.x + c) % 2 == 0) {
                             drawSquare(this.x + c, this.y + r, color[0]);
                         } else {
                             drawSquare(this.x + c, this.y + r, color[1]);
@@ -165,6 +165,7 @@ class Piece {
     }
 
     lock() {
+        top:
         for (r = 0; r < this.activeTetromino.length; r++) {
             for (c = 0; c < this.activeTetromino.length; c++) {
                 // we skip the vacant squares
@@ -173,10 +174,12 @@ class Piece {
                 }
                 // pieces to lock on top = game over
                 if (this.y + r < 0) {
-                    alert("Game Over");
+                    
+                    //alert("Game Over");
                     // stop request animation frame
                     gameOver = true;
-                    break;
+                    gameOverF();
+                    break top;
                 }
                 // we lock the piece
                 //console.log((this.y + r)+"|"+(this.x + c)+"="+", "+this.color);
@@ -217,9 +220,9 @@ class Piece {
 
                 }
                 score += 10;
-                if( score % 50 == 0) {
-                  gameSpeed = gameSpeed / 1.3;
-                  level++;
+                if (score % 50 == 0) {
+                    gameSpeed = gameSpeed / 1.3;
+                    level++;
                 }
                 pScore.innerHTML = "Score: " + score;
                 pLevel.innerHTML = "Level: " + level;
@@ -300,41 +303,41 @@ var touchY;
 var touchId;
 
 document.getElementById('tetris').addEventListener('touchstart', function (e) {
-  // e.preventDefault();
-  touchX = e.touches[0].pageX;
-  touchY = e.touches[0].pageY;
-  touchId = e.touches[0].identifier;
+    // e.preventDefault();
+    touchX = e.touches[0].pageX;
+    touchY = e.touches[0].pageY;
+    touchId = e.touches[0].identifier;
 });
 
 document.getElementById('tetris').addEventListener('touchend', function (e) {
-  // e.preventDefault();
-  var touchEndX;
-  var touchEndY;
-  var touch = e.changedTouches.item(0);
-  try {
-    touchEndX = touch.pageX;
-    touchEndY = touch.pageY;
-  } catch (err) {
-    console.log(arr);
-    return;
-  }
+    // e.preventDefault();
+    var touchEndX;
+    var touchEndY;
+    var touch = e.changedTouches.item(0);
+    try {
+        touchEndX = touch.pageX;
+        touchEndY = touch.pageY;
+    } catch (err) {
+        console.log(arr);
+        return;
+    }
 
-  var difX = (touchEndX - touchX);
-  var difY = (touchEndY - touchY);
-  // console.log("DiffX: "+difX)
-  // console.log("DiffY: "+difY)
-  if (difX > 50) {
-    p.moveRight();
-  }
-  else if(difX < -50) {
-    p.moveLeft();
-  }
-  else if(difY < -50 ) {
-    p.moveDown();
-  }
-  else if(difX == 0 && difY == 0) {
-    p.rotate();
-  }
+    var difX = (touchEndX - touchX);
+    var difY = (touchEndY - touchY);
+    // console.log("DiffX: "+difX)
+    // console.log("DiffY: "+difY)
+    if (difX > 50) {
+        p.moveRight();
+    }
+    else if (difX < -50) {
+        p.moveLeft();
+    }
+    else if (difY < -50) {
+        p.moveDown();
+    }
+    else if (difX == 0 && difY == 0) {
+        p.rotate();
+    }
 })
 
 // drop the piece every 1sec
@@ -354,25 +357,35 @@ function drop() {
     }
 }
 function startGame() {
-  if(nameInput.value == "") {
-    t1 = {background: ["red", "purple"]};
-    nameInput.animate(t1, {
-  // timing options
-  duration: 1000,
-  iterations: 3
-})
+    if (nameInput.value == "") {
+        t1 = { background: ["red", "purple"] };
+        nameInput.animate(t1, {
+            // timing options
+            duration: 1000,
+            iterations: 3
+        })
 
-  } else {
-    document.getElementById("gameMenu").style.display = 'none';
-    document.getElementById("stats").style.display = 'block';
-    gameSpeed = 800;
-    score = 0;
-    level = 1;
-    pScore.innerHTML = "Score: " + score;
-    pLevel.innerHTML = "Level: " + level;
-    constructBoard()
-    drawBoard();
-    drop();
-  }
+    } else {
+        document.getElementById("gameMenu").style.display = 'none';
+        document.getElementById("stats").style.display = 'block';
+        gameSpeed = 800;
+        score = 0;
+        level = 1;
+        pScore.innerHTML = "Score: " + score;
+        pLevel.innerHTML = "Level: " + level;
+        constructBoard()
+        drawBoard();
+        drop();
+    }
 
+}
+function gameOverF() {
+    var r = confirm("Restart game?!\nEither OK or Cancel.");
+    if(r== true) {
+        startGame();
+    } else {
+        document.getElementById("gameMenu").style.display = 'block';
+        document.getElementById("tetris").style.display = 'none';
+        console.log("bitti")
+    }
 }
