@@ -355,6 +355,7 @@ function drop() {
         //console.log(gameOver)
     }
     if (!gameOver) {
+        console.log("gameover değil")
         requestAnimationFrame(drop);
     }
 }
@@ -371,7 +372,8 @@ function startGame() {
         document.getElementById("gameMenu").style.display = 'none';
         document.getElementById("stats").style.display = 'block';
         document.getElementById("referans").style.display = 'none';
-        
+        cvs.style.display = 'block';
+        gameOver = false;
         gameSpeed = 800;
         score = 0;
         level = 1;
@@ -385,11 +387,11 @@ function startGame() {
 }
 function gameOverF() {
     var r = confirm("Restart game?!\nEither OK or Cancel.");
-    if(r== true) {
+    if (r == true) {
         startGame();
     } else {
         document.getElementById("gameMenu").style.display = 'block';
-        document.getElementById("tetris").style.display = 'none';
+        cvs.style.display = 'none';
         console.log("bitti")
     }
 }
