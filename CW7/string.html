@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        let str;
+        function parser() {
+            str = inp.value;
+            str = str.toLocaleUpperCase('TR')
+            str = str.split("")
+            sample.innerText = (str.join(" "))
+            
+        }
+    </script>
+</head>
+<body>
+    <p>
+      <textarea id="inp" onKeyUp="parser()" rows="12" cols="32"> </textarea>
+    </p>
+    <hr/>
+    <pre id="sample"></pre>
+
+</body>
+</html>
