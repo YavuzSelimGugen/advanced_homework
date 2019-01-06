@@ -1,28 +1,91 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    
+
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .jumbotron {
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            background-color: #e9ecef;
+            border-radius: .3rem;
+        }
+
+        html * {
+            font-family: 'Courier New', Courier, monospace !important;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .container {
+
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .output {
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 0.01em 16px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: justify;
+        }
+    </style>
     <script>
+        t3 = { color: ["yellow", "cyan", "magenta", "yellow"] }
         let str;
         function parser() {
             str = inp.value;
             str = str.toLocaleUpperCase('TR')
             str = str.split("")
-            sample.innerText = (str.join(" "))
-            
+            str = str.join(" ");
+            dd.innerText = str;
+        }
+        function copyToClipboard(elementId) {
+
+            // Create an auxiliary hidden input
+            var aux = document.createElement("input");
+
+            // Get the text from the element passed into the input
+            aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+
+            // Append the aux input to the body
+            document.body.appendChild(aux);
+
+            // Highlight the content
+            aux.select();
+
+            // Execute the copy command
+            document.execCommand("copy");
+            not.animate(t3, 2000);
+            // Remove the input from the body
+            document.body.removeChild(aux);
+
         }
     </script>
 </head>
-<body>
-    <p>
-      <textarea id="inp" onKeyUp="parser()" rows="12" cols="32"> </textarea>
-    </p>
-    <hr/>
-    <pre id="sample"></pre>
 
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <textarea id="inp" onKeyUp="parser()" rows="12" cols="32"></textarea>
+            <hr />
+            <button onclick="copyToClipboard('dd')">Copy text</button>
+            <br>
+            <!-- <input id="dd" type="text"> -->
+            <!-- <textarea id="dd" rows="5" cols="20" wrap="hard" onblur="CopyToClipboard(this)"></textarea> -->
+            <p id="dd" class="output"></p>
+            <p id="not" style="color: transparent">Copied</p>
+        </div>
+        
+    </div>
 </body>
+
 </html>
