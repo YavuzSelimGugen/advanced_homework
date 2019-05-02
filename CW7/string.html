@@ -48,14 +48,20 @@
             str = str.join(" ");
             dd.innerText = str;
         }
+        function parserParam (param) {
+            str = param
+            str = str.toLocaleUpperCase('TR')
+            str = str.split("")
+            str = str.join(" ");
+            return str;
+        }
         function copyToClipboard(elementId) {
 
             // Create an auxiliary hidden input
-            var aux = document.createElement("input");
+            var aux = document.createElement("textarea");
 
             // Get the text from the element passed into the input
-            aux.setAttribute("value", document.getElementById(elementId).innerHTML);
-
+            aux.value = parserParam(document.getElementById("inp").value)
             // Append the aux input to the body
             document.body.appendChild(aux);
 
@@ -75,7 +81,14 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-            <textarea id="inp" onKeyUp="parser()" rows="12" cols="32"></textarea>
+            <textarea id="inp" onKeyUp="parser()" rows="12" cols="32">
+                Sana durlanmış kelimeler getireceğim
+pörsümüş bir dünyayı kahreden kelimeler 
+kelimeler, bazısı tüyden bazısı demir
+seni çünkü dik tutacak bilirim 
+kabzenin, çekicin ve divitin 
+tutulduğu yerden parlayan şiir.
+            </textarea>
             <hr />
             <button onclick="copyToClipboard('dd')">Copy text</button>
             <br>
