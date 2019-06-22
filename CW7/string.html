@@ -42,12 +42,26 @@
           max-width: 300px;
           height: auto;
         }
-        textarea + img {
+        /* textarea + img {
           margin-left: 3.7%;
           width: 20%;
           display: inline-flex; /* adjusted */
           white-space: nowrap;
-        }
+        } */
+
+          .flex {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+
+          .flex>div {
+            flex: 1 0 50%;
+          }
+
+          .flex>div:first-child {
+            flex: 0 1 100%;
+          }
     </style>
     <script>
         t3 = { color: ["black", "cyan", "magenta", "yellow", "black"] }
@@ -90,10 +104,10 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron">
+    <div id="" class="container">
+        <div id="main" class="jumbotron">
           <textarea id="inp" onKeyUp="parser()" rows="12" cols="32"></textarea>
-          <img id="ferro" src="ferro.png" alt="" class="responsive-img">
+          <img id="ferro" src="ferro.png" alt="" class="responsive-img" style="border-radius:15px;">
 
             <hr />
             <button onclick="copyToClipboard('dd')">Copy text</button>
@@ -106,8 +120,8 @@
 
     </div>
     <script type="text/javascript">
-      t2 = { backgroundColor: ["black", "cyan", "magenta", "yellow", "black"] }
-      ferro = document.getElementById("ferro");
+      t2 = { backgroundColor: ["white", "cyan", "magenta", "yellow", "white"] }
+      ferro = document.getElementById("main");
       ferro.animate(t2, {duration: 2000, iterations: Infinity})
     </script>
 </body>
